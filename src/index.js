@@ -1,7 +1,13 @@
 import express from 'express';
-const app = express();
 import { envConfig } from './constants/config.js'
-console.log(envConfig)
+import { DatabaseService } from './services/database.services.js';
+let db = new DatabaseService()
+await db.connect()
+const app = express();
+
+
+
+
 app.get('/', (req, res) => {
   res.send('Hello World!');
 });

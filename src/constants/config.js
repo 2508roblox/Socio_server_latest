@@ -20,12 +20,11 @@ dotenv.config();
 // }
 const envHandle = () => {
     const env = process.env.NODE_ENV || 'development'
-    console.log('check env ' + process.env.NODE_ENV)
 
     const envFilename = `.env.${env}`
-    console.log('>>> check envFilename: ', envFilename)
+    console.log("check env",envFilename)
     config({
-        path: `.env.${env}`
+        path: envFilename
     })
    return  {
         port: process.env.PORT || '4000',
