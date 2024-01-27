@@ -1,9 +1,14 @@
 import express from 'express';
 import { envConfig } from './constants/config.js'
 import { DatabaseService } from './services/database.services.js';
-import { errorHandler } from './middlewares/error.middleware.js';
-let db = new DatabaseService()
+import { errorHandler, notFound } from './middlewares/error.middleware.js';
+import cors from "cors";
+import dotenv from "dotenv";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+
 dotenv.config();
+let db = new DatabaseService()
 const app = express();
 await db.connect()
 
