@@ -2,7 +2,7 @@ import express from 'express';
 import { envConfig } from './constants/config.js'
 import { DatabaseService } from './services/database.services.js';
 let db = new DatabaseService()
-await db.connect()
+// await db.connect()
 const app = express();
 
 
