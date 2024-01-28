@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 const friendRouter = express.Router();
 
 // Gửi yêu cầu kết bạn đến người dùng có ID cụ thể

@@ -11,6 +11,7 @@ import postsRouter from './routes/posts.routes.js';
 import conversationRouter from './routes/conversations.routes.js';
 import friendRouter from './routes/friendRequests.routes.js';
 import userRouter from './routes/users.routes.js';
+import messageRouter from './routes/message.routes.js';
 
 dotenv.config();
 let db = new DatabaseService()
@@ -25,15 +26,16 @@ app.use(cookieParser());
 
 // authentication endpoint
 app.use('/api/v1/auth', authRouter);
-app.use('/api/v1/posts', postsRouter);
-app.use('/api/v1/conversations', conversationRouter);
-app.use('/api/v1/friends', friendRouter);
-app.use('/api/v1/users', userRouter);
-app.use('/api/v1/messages', messageRouter);
 // posts endpoint
-// friends endpoint
+app.use('/api/v1/posts', postsRouter);
 // conversation endpoint
-// authentication endpoint
+app.use('/api/v1/conversations', conversationRouter);
+// friends endpoint
+app.use('/api/v1/friends', friendRouter);
+// users endpoint
+app.use('/api/v1/users', userRouter);
+// messages endpoint
+app.use('/api/v1/messages', messageRouter);
 
 
 //error middleware

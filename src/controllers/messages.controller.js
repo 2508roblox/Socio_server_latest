@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 const messageRouter = express.Router();
 
 // Lấy tất cả các tin nhắn trong một cuộc trò chuyện

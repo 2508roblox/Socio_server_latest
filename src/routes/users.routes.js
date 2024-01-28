@@ -1,4 +1,4 @@
-const express = require('express');
+import express from 'express'
 const userRouter = express.Router();
 
 // Lấy danh sách tất cả người dùng
@@ -16,4 +16,4 @@ userRouter.put('/users/:id', async (req, res) => {
    
 });
 
-export default userRouter;
+export default userRouter; 

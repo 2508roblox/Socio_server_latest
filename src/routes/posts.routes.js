@@ -1,4 +1,4 @@
-const express = require('express');
+ import express from 'express'
 const postsRouter = express.Router();
 
 // Tạo bài đăng mới
