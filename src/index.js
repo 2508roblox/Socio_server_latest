@@ -6,6 +6,7 @@ import cors from "cors";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
+import authRouter from './routes/auth.routes.js';
 
 dotenv.config();
 let db = new DatabaseService()
@@ -19,9 +20,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 // authentication endpoint
-app.get('/', (req, res) => {
-  res.send('Hello World!');
-});
+app.use('/auth', authRouter);
 // posts endpoint
 // friends endpoint
 // conversation endpoint
