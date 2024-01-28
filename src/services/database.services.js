@@ -24,7 +24,7 @@ export class DatabaseService {
       try {
         await this.client.connect();
         await this.db.command({ ping: 1 })
-        console.log(`Connected successfully to server`)
+        console.log(`Connected successfully to database ${envConfig.dbName}`)
       } catch (error) {
         console.log(error)
       }
