@@ -7,6 +7,10 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import cookieParser from "cookie-parser";
 import authRouter from './routes/auth.routes.js';
+import postsRouter from './routes/posts.routes.js';
+import conversationRouter from './routes/conversations.routes.js';
+import friendRouter from './routes/friendRequests.routes.js';
+import userRouter from './routes/users.routes.js';
 
 dotenv.config();
 let db = new DatabaseService()
@@ -20,7 +24,12 @@ app.use(express.json());
 app.use(cookieParser());
 
 // authentication endpoint
-app.use('/auth', authRouter);
+app.use('/api/v1/auth', authRouter);
+app.use('/api/v1/posts', postsRouter);
+app.use('/api/v1/conversations', conversationRouter);
+app.use('/api/v1/friends', friendRouter);
+app.use('/api/v1/users', userRouter);
+app.use('/api/v1/messages', messageRouter);
 // posts endpoint
 // friends endpoint
 // conversation endpoint
