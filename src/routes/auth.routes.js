@@ -1,12 +1,19 @@
 import { Router } from 'express'
+import asyncHandlerWrapper from '../utils/handlers.js';
+import { loginController } from '../controllers/auth.controller.js';
 
 
 const authRouter = Router()
 
 
 
-authRouter.get('/signin', (req, res ) => {
-    res.json('fffff')
-})
+ 
+// Đăng ký tài khoản mới
+authRouter.get('/login',  asyncHandlerWrapper(loginController) )
+
+// Đăng nhập và lấy thông tin người dùng
+authRouter.post('/register', asyncHandlerWrapper(loginController));
+  
+
 
 export default authRouter
