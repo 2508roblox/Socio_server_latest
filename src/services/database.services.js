@@ -7,6 +7,7 @@ const connectDB = async () => {
 
   try {
     const conn = await mongoose.connect(`mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`)
+      // console.log(`mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`)
       .then(() => {
         console.log('Connected to MongoDB');
       })

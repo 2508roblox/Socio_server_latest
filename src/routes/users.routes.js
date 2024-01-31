@@ -1,19 +1,20 @@
-import express from 'express'
+
+import express from 'express';
+import {
+    getAllUsersController,
+    getUserByIdController,
+    updateUserController
+} from '../controllers/users.controller.js';
+
 const userRouter = express.Router();
 
-// Lấy danh sách tất cả người dùng
-userRouter.get('/users', async (req, res) => {
+// Get all users
+userRouter.get('/all', getAllUsersController);
 
-});
+// Get a user by ID
+userRouter.get('/:id', getUserByIdController);
 
-// Lấy thông tin của người dùng có ID cụ thể
-userRouter.get('/users/:id', async (req, res) => {
+// Update a user by ID
+userRouter.put('/:id', updateUserController);
 
-});
-
-// Cập nhật thông tin của người dùng có ID cụ thể
-userRouter.put('/users/:id', async (req, res) => {
-
-});
-
-export default userRouter; 
+export default userRouter;

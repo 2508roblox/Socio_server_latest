@@ -1,29 +1,36 @@
-import express from 'express'
+import express from 'express';
+import asyncHandlerWrapper from '../utils/handlers.js';
+import {
+    createPostController,
+    getPostByIdController,
+    getPostsByUserIdController,
+    likePostController,
+    unlikePostController,
+    updatePostController,
+    deletePostController
+} from '../controllers/posts.controller.js';
+
 const postsRouter = express.Router();
 
-// Tạo bài đăng mới
-postsRouter.post('/posts', async (req, res) => {
+// Create a new post
+postsRouter.post('/create', asyncHandlerWrapper(createPostController));
 
-});
+// Get a specific post by ID
+postsRouter.get('/:id', asyncHandlerWrapper(getPostByIdController));
 
-// Lấy thông tin bài đăng có ID cụ thể
-postsRouter.get('/posts/:id', async (req, res) => {
+// Get posts by a specific user ID
+postsRouter.get('/user/:id', asyncHandlerWrapper(getPostsByUserIdController));
 
-});
+// Like a post with a specific ID
+postsRouter.put('/:id/like', asyncHandlerWrapper(likePostController));
 
-// Lấy danh sách bài đăng của người dùng có ID cụ thể
-postsRouter.get('/posts/user/:id', async (req, res) => {
+// Unlike a post with a specific ID
+postsRouter.put('/:id/unlike', asyncHandlerWrapper(unlikePostController));
 
-});
+// Update a post with a specific ID
+postsRouter.put('/:id/update', asyncHandlerWrapper(updatePostController));
 
-// Thích một bài đăng có ID cụ thể
-postsRouter.put('/posts/:id/like', async (req, res) => {
-
-});
-
-// Bỏ thích một bài đăng có ID cụ thể
-postsRouter.put('/posts/:id/unlike', async (req, res) => {
-
-});
+// Delete a post with a specific ID
+postsRouter.delete('/:id/delete', asyncHandlerWrapper(deletePostController));
 
 export default postsRouter;
