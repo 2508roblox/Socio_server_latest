@@ -13,9 +13,9 @@ export class UserService {
   async register(body) {
     const { username, password } = body;
     let isExist = await User.findOne({ username: username })
-    return isExist;
-    // const newUser = new User({ username, password });
-    // await newUser.save();
+    const newUser = new User({ username, password });
+    await newUser.save();
+    return newUser;
 
   }
 }
