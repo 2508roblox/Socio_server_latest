@@ -1,6 +1,6 @@
 import express from 'express';
 import { envConfig } from './constants/config.js'
-import { DatabaseService } from './services/database.services.js';
+import connectDB from './services/database.services.js';
 import { errorHandler, notFound } from './middlewares/error.middleware.js';
 import cors from "cors";
 import dotenv from "dotenv";
@@ -33,10 +33,9 @@ export const morganMiddleware = morgan(function (tokens, req, res) {
 
 
 dotenv.config();
-let db = new DatabaseService()
 const app = express();
-await db.connect()
 
+connectDB();
 
 
 // Use Morgan with the custom logger

@@ -30,17 +30,17 @@ import mongoose from "mongoose";
 //     },
 //     // Add more fields as needed
 // });
-const UserSchema = new mongoose.Schema({
+export const UserSchema = new mongoose.Schema({
     username: {
         type: String,
+        unique: [true, "Username Exist"]
     },
-
     password: {
         type: String,
     },
 
-    // Add more fields as needed
+
 });
 
-const User = mongoose.model('users', UserSchema);
-export default User;
+
+export default mongoose.model.Users || mongoose.model('User', UserSchema);

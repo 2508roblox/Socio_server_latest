@@ -1,35 +1,24 @@
-import { config } from "dotenv"
-import { envConfig } from "../constants/config.js"
-import { MongoClient, ServerApiVersion } from "mongodb"
-config()
 
+import { config } from "dotenv";
+import { envConfig } from "../constants/config.js";
+import mongoose from 'mongoose';
 
-export class DatabaseService {
-  uri = `mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`
-  client
-  db
+const connectDB = async () => {
 
-  constructor() {
-    this.client = new MongoClient(this.uri, {
-      serverApi: {
-        version: ServerApiVersion.v1,
-        strict: true,
-        deprecationErrors: true,
-      }
-    })
-    this.db = this.client.db(envConfig.dbName)
+  try {
+    const conn = await mongoose.connect(`mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`)
+      .then(() => {
+        console.log('Connected to MongoDB');
+      })
+      .catch((error) => {
+        console.error('Failed to connect to MongoDB', error);
+      });
+    console.log(`MongoDB Connected `);
+
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    process.exit(1);
   }
+};
 
-  async connect() {
-    try {
-      await this.client.connect();
-      await this.db.command({ ping: 1 })
-      console.log(`Connected successfully to database ${envConfig.dbName}`)
-      console.log(`mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`)
-    } catch (error) {
-      console.log(error)
-    }
-  }
-
-
-}
+export default connectDB;
