@@ -3,6 +3,9 @@ info:
   title: Conversations and Messages API
   version: 1.0.0
   description: API for managing conversations and messages
+  tags:
+  - name: conversations
+    description: Endpoints for conversations
 paths:
   /conversations:
     post:
@@ -241,3 +244,5 @@ paths:
       responses:
         '200':
           description: Successful operation
+
+          
