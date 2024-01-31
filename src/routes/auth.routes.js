@@ -9,7 +9,7 @@ const authRouter = Router()
 
  
 // Đăng ký tài khoản mới
-authRouter.get('/login',  asyncHandlerWrapper(loginController) )
+authRouter.post('/login',  asyncHandlerWrapper(loginController) )
 
 // Đăng nhập và lấy thông tin người dùng
 authRouter.post('/register', asyncHandlerWrapper(loginController));
