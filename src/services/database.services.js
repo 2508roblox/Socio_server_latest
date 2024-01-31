@@ -25,6 +25,7 @@ export class DatabaseService {
       await this.client.connect();
       await this.db.command({ ping: 1 })
       console.log(`Connected successfully to database ${envConfig.dbName}`)
+      console.log(`mongodb+srv://${envConfig.dbUsername}:${envConfig.dbPassword}@cluster0.qofi8wl.mongodb.net/?retryWrites=true&w=majority`)
     } catch (error) {
       console.log(error)
     }
