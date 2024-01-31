@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const MessageSchema = new mongoose.Schema({
+
+const MessengerSchema = new mongoose.Schema({
     sender: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
@@ -15,24 +16,34 @@ const MessageSchema = new mongoose.Schema({
         ref: 'conversations',
         required: true,
     },
-    recipient: {
-        type: mongoose.Schema.Types.ObjectId,
-        ref: 'users',
-        required: true,
+    status: {
+        type: String,
     },
-    file: {
-        fileName: {
-            type: String,
-        },
-        fileSize: {
-            type: Number,
-        },
-        fileType: {
-            type: String,
-        },
-    },
+    hidden: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'users',
+        }
+    ],
+    file: [
+        {
+            fileName: {
+                type: String,
+            },
+            fileSize: {
+                type: Number,
+            },
+            fileType: {
+                type: String,
+            },
+            data: Buffer,
+        }
+    ],
+}, {
+    timestamps: true
 });
 
-const Messenger = mongoose.model('messages', MessengerSchema);
+ 
 
-module.exports = Messenger;
+const Messenger = mongoose.model.Messenger || mongoose.model('Messenger', MessengerSchema);
+export default Messenger

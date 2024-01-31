@@ -1,6 +1,7 @@
-const mongoose = require('mongoose');
+import mongoose from "mongoose";
 
-const ConversationSchema = new mongoose.Schema({
+
+export const ConversationSchema = new mongoose.Schema({
     participants: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'users',
@@ -9,15 +10,18 @@ const ConversationSchema = new mongoose.Schema({
     // Add additional fields for conversation information below
     title: {
         type: String,
-        required: true,
+        required: false,
     },
-    createdAt: {
-        type: Date,
-        default: Date.now,
+    cover_image: {
+        type: String,
+        required: false,
     },
+    
     // Add more fields as needed
+}, {
+    timestamps: true
 });
+const Conversation = mongoose.model.Conversation || mongoose.model('Conversation', ConversationSchema);
+export default Conversation
 
-const Conversation = mongoose.model('conversations', ConversationSchema);
 
-module.exports = Conversation;
