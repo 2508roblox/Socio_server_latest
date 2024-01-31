@@ -41,3 +41,18 @@ export const unlikePostController = async (req, res) => {
 
 
 };
+export const updatePostController = async (req, res) => {
+    const postId = req.params.id;
+    const updatedData = req.body;
+
+    const updatedPost = await postService.updatePost(postId, updatedData);
+    return res.json({ post: updatedPost });
+};
+
+// Delete a post with a specific ID
+export const deletePostController = async (req, res) => {
+    const postId = req.params.id;
+
+    await postService.deletePost(postId);
+    return res.json({ message: "Post deleted successfully" });
+};

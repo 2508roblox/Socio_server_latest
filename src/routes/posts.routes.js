@@ -6,6 +6,8 @@ import {
     getPostsByUserIdController,
     likePostController,
     unlikePostController,
+    updatePostController,
+    deletePostController
 } from '../controllers/posts.controller.js';
 
 const postsRouter = express.Router();
@@ -24,5 +26,11 @@ postsRouter.put('/:id/like', asyncHandlerWrapper(likePostController));
 
 // Unlike a post with a specific ID
 postsRouter.put('/:id/unlike', asyncHandlerWrapper(unlikePostController));
+
+// Update a post with a specific ID
+postsRouter.put('/:id/update', asyncHandlerWrapper(updatePostController));
+
+// Delete a post with a specific ID
+postsRouter.delete('/:id/delete', asyncHandlerWrapper(deletePostController));
 
 export default postsRouter;

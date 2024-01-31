@@ -38,6 +38,23 @@ export class UserService {
     await newUser.save();
     return newUser;
   }
+
+  async getAllUsers() {
+    const users = await User.find();
+    return users;
+  };
+
+  async getUserById(userId) {
+    const user = await User.findById(userId);
+    return user;
+  };
+
+  async updateUser(userId, updatedData) {
+    const updatedUser = await User.findByIdAndUpdate(userId, updatedData, {
+      new: true,
+    }).exec();
+    return updatedUser;
+  };
 }
 
 

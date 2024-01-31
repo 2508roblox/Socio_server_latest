@@ -59,7 +59,19 @@ export class PostService {
     return post;
 
   }
+  async updatePost(postId, updatedData) {
+    const updatedPost = await Post.findByIdAndUpdate(postId, updatedData, {
+      new: true,
+    }).exec();
+    return updatedPost;
+  };
+
+  async deletePost(postId) {
+    await Post.findByIdAndDelete(postId).exec();
+  };
 }
+
+
 
 const postService = new PostService();
 export default postService;
