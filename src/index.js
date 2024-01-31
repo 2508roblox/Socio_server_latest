@@ -13,8 +13,11 @@ import friendRouter from './routes/friendRequests.routes.js';
 import userRouter from './routes/users.routes.js';
 import messageRouter from './routes/message.routes.js';
 import morgan from 'morgan';
-
 import chalk from 'chalk';
+// swagger
+import swaggerUi from "swagger-ui-express";
+import YAML  from 'yamljs'
+//
 export const morganMiddleware = morgan(function (tokens, req, res) {
   return [
     '\n',
@@ -37,7 +40,9 @@ const app = express();
 
 connectDB();
 
-
+// Use Swagger
+const swaggerDocument = YAML.load('./src/api.yaml');
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 // Use Morgan with the custom logger
 app.use(morganMiddleware);
 

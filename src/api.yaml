@@ -1,0 +1,243 @@
+openapi: 3.0.0
+info:
+  title: Conversations and Messages API
+  version: 1.0.0
+  description: API for managing conversations and messages
+paths:
+  /conversations:
+    post:
+      summary: Create a new conversation
+      operationId: createConversation
+      responses:
+        '200':
+          description: Successful operation
+    get:
+      summary: Get all conversations
+      operationId: getAllConversations
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{query}/search:
+    get:
+      summary: Search conversations based on query
+      operationId: searchConversations
+      parameters:
+        - name: query
+          in: path
+          description: The search query
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/room:
+    get:
+      summary: Get information about a specific conversation by ID
+      operationId: getConversationById
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/invite:
+    put:
+      summary: Invite members to a specific conversation by ID
+      operationId: inviteMembersToConversation
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/remove_members:
+    put:
+      summary: Remove members from a specific conversation by ID
+      operationId: removeMembersFromConversation
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/title:
+    put:
+      summary: Edit the title of a specific conversation by ID
+      operationId: editConversationTitle
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/cover_image:
+    put:
+      summary: Edit the cover image of a specific conversation by ID
+      operationId: editConversationCoverImage
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/remove_conversation:
+    delete:
+      summary: Delete a specific conversation by ID
+      operationId: deleteConversation
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{userId}/user_conversation:
+    get:
+      summary: Get a list of conversations for a specific user by user ID
+      operationId: getUserConversations
+      parameters:
+        - name: userId
+          in: path
+          description: The ID of the user
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /conversations/{id}/members:
+    get:
+      summary: Get a list of members in a specific conversation by ID
+      operationId: getConversationMembers
+      parameters:
+        - name: id
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages/{conversationId}/{page}:
+    get:
+      summary: Get all messages in a conversation
+      operationId: getAllMessagesByConversationId
+      parameters:
+        - name: conversationId
+          in: path
+          description: The ID of the conversation
+          required: true
+          schema:
+            type: string
+        - name: page
+          in: path
+          description: The page number
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages/{messId}:
+    get:
+      summary: Get a specific message by ID
+      operationId: getMessageById
+      parameters:
+        - name: messId
+          in: path
+          description: The ID of the message
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages:
+    post:
+      summary: Create a new message
+      operationId: createMessage
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages/{messageId}/update:
+    put:
+      summary: Update a specific message by ID
+      operationId: updateMessage
+      parameters:
+        - name: messageId
+          in: path
+          description: The ID of the message
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages/{messageId}/delete:
+    delete:
+      summary: Delete a specific message by ID
+      operationId: deleteMessage
+      parameters:
+        - name: messageId
+          in: path
+          description: The ID of the message
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+
+  /messages/{messageId}/hidden:
+    put:
+      summary: Hide a specific message by ID
+      operationId: hideMessage
+      parameters:
+        - name: messageId
+          in: path
+          description: The ID of the message
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
