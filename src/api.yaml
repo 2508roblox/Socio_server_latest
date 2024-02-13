@@ -13,6 +13,10 @@ tags:
   description: Access to Petstore orders
 - name: messages
   description: Access to Petstore orders
+- name: users
+  description: Access to Petstore orders
+- name: posts
+  description: Access to Petstore orders
  
  
 paths:
@@ -22,1004 +26,201 @@ paths:
       - auth
       summary: uploads an image
       description: ''
-      operationId: uploadFile
-      consumes:
-      - multipart/form-data
-      produces:
-      - application/json
-  
-      responses:
-        '200':
-          description: successful operation
-          schema:
-            "$ref": "#/definitions/ApiResponse"
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+   
+    
   "/register":
     post:
       tags:
       - auth
-      summary: Add a new pet to the store
+      summary: uploads an image
       description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
     
   "/":
     post:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      operationId: /
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
-    
-    get:
-      tags:
-      - messages
-      summary: Add a new pet to the store
-      description: ''
-      operationId: /
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:query/search":
     get:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      operationId: /:query/search
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
-  "/conversations/all":
-    get:
-      tags:
-      - conversations
-      summary: Add a new pet to the store
-      description: ''
-      operationId: /:query/search
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+   
+  
+     
     
   
   "/:id/room":
     get:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      operationId: /:id/room
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/invite":
     put:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/remove_members":
     put:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/title":
     put:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/cover_image":
     put:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/remove_conversation":
     delete:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:userId/user_conversation":
     get:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:id/members":
     get:
       tags:
       - conversations
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/friend-requests/:id":
     post:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
     get:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
  
   "/friend-requests/sent/:id":
     get:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/friend-requests/:id/confirm":
     put:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/friends/:id":
     get:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
     delete:
       tags:
       - friends
-      summary: Add a new pet to the store
-      description: ''
-      
-      consumes:
-      - application/json
-      - application/xml
-      produces:
-      - application/json
-      - application/xml
-      parameters:
-      - in: body
-        name: body
-        description: Pet object that needs to be added to the store
-        required: true
-        schema:
-          "$ref": "#/definitions/Pet"
-      responses:
-        '405':
-          description: Invalid input
-      security:
-      - petstore_auth:
-        - write:pets
-        - read:pets
+     
     
   "/:conversationId/:page":
       get:
         tags:
         - messages
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/:messId":
       get:
         tags:
         - messages
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
  
   "/:messageId/update":
       put:
         tags:
         - messages
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
  
   "/:messageId/delete":
       delete:
         tags:
         - messages
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/:messageId/hidden":
       put:
         tags:
         - messages
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/create":
       post:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/:id":
       get:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
-      
-      get:
+        - users
+      put:
         tags:
         - users
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
       
   "/user/:id":
       get:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
   "/:id/like":
       put:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/:id/unlike":
       put:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
   "/:id/update":
       put:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
   "/:id/delete":
       delete:
         tags:
         - posts
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+       
       
  
-  "/users/all":
-  
+  "/all":
       get:
         tags:
+        - conversations
         - users
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
-  "/users/:id":
-      get:
-        tags:
-        - users
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
+
+     
       
-      put:
-        tags:
-        - users
-        summary: Add a new pet to the store
-        description: ''
-        
-        consumes:
-        - application/json
-        - application/xml
-        produces:
-        - application/json
-        - application/xml
-        parameters:
-        - in: body
-          name: body
-          description: Pet object that needs to be added to the store
-          required: true
-          schema:
-            "$ref": "#/definitions/Pet"
-        responses:
-          '405':
-            description: Invalid input
-        security:
-        - petstore_auth:
-          - write:pets
-          - read:pets
-      
- 
- 
- 
-  
- 
+     
+       
       
   securityDefinitions:
   api_key:
@@ -1034,125 +235,6 @@ paths:
       read:pets: read your pets
       write:pets: modify pets in your account
 definitions:
-  ApiResponse:
-    type: object
-    properties:
-      code:
-        type: integer
-        format: int32
-      type:
-        type: string
-      message:
-        type: string
-  Category:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    xml:
-      name: Category
-  Pet:
-    type: object
-    required:
-    - name
-    - photoUrls
-    properties:
-      id:
-        type: integer
-        format: int64
-      category:
-        "$ref": "#/definitions/Category"
-      name:
-        type: string
-        example: doggie
-      photoUrls:
-        type: array
-        xml:
-          wrapped: true
-        items:
-          type: string
-          xml:
-            name: photoUrl
-      tags:
-        type: array
-        xml:
-          wrapped: true
-        items:
-          xml:
-            name: tag
-          "$ref": "#/definitions/Tag"
-      status:
-        type: string
-        description: pet status in the store
-        enum:
-        - available
-        - pending
-        - sold
-    xml:
-      name: Pet
-  Tag:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      name:
-        type: string
-    xml:
-      name: Tag
-  Order:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      petId:
-        type: integer
-        format: int64
-      quantity:
-        type: integer
-        format: int32
-      shipDate:
-        type: string
-        format: date-time
-      status:
-        type: string
-        description: Order Status
-        enum:
-        - placed
-        - approved
-        - delivered
-      complete:
-        type: boolean
-    xml:
-      name: Order
-  User:
-    type: object
-    properties:
-      id:
-        type: integer
-        format: int64
-      username:
-        type: string
-      firstName:
-        type: string
-      lastName:
-        type: string
-      email:
-        type: string
-      password:
-        type: string
-      phone:
-        type: string
-      userStatus:
-        type: integer
-        format: int32
-        description: User Status
-    xml:
-      name: User
 externalDocs:
   description: Find out more about Swagger
   url: http://swagger.io
