@@ -6,6 +6,7 @@ const asyncHandlerWrapper = (func) => {
       await func(req, res, next);
     } catch (error) {
       next(error);
+      // go to error middleware
     }
   };
 };

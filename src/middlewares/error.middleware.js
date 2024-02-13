@@ -6,10 +6,10 @@ const notFound = (req, res, next) => {
 
 
 const errorHandler = (err, req, res, next) => {
-     res.status(400).json({
-        message: err.message,
-        stack: err.stack
-    })
+    res.status(400).json({
+       message: err.message,
+       stack: err.stack
+   })
 }
 export {
     errorHandler,

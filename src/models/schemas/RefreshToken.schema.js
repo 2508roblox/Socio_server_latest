@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-
+import mongoose from 'mongoose'
 const RefreshTokenSchema = new mongoose.Schema({
     
     token: {
@@ -20,4 +19,4 @@ const RefreshTokenSchema = new mongoose.Schema({
 
 const RefreshToken = mongoose.model('refresh_tokens', RefreshTokenSchema);
 
-module.exports = RefreshToken;
+export default RefreshToken;
