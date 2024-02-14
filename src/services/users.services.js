@@ -79,6 +79,14 @@ export class UserService {
     });
     return { accessToken, refreshToken };
   }
+  async getAccessTokenByRefreshToken(user_id) {
+    let   token  = await this.signAccessToken(
+      {user_id: user_id}
+    );
+    // insert refresh token to database
+   
+    return { token };
+  }
   async logout(user_id) {
      await RefreshToken.deleteMany({ user_id  });
    
