@@ -16,7 +16,7 @@ import morgan from 'morgan';
 import chalk from 'chalk';
 // swagger
 import swaggerUi from "swagger-ui-express";
-import YAML  from 'yamljs'
+import YAML from 'yamljs'
 //
 export const morganMiddleware = morgan(function (tokens, req, res) {
   return [

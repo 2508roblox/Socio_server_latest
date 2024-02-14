@@ -1,248 +1,240 @@
-openapi: 3.0.0
-info:
-  title: Conversations and Messages API
-  version: 1.0.0
-  description: API for managing conversations and messages
-  tags:
-  - name: conversations
-    description: Endpoints for conversations
+swagger: '2.0'
+host: http://localhost:8008
+basePath: "/api/v1"
+tags:
+- name: auth
+  description: Everything about your Pets
+  externalDocs:
+    description: Find out more
+    url: http://swagger.io
+- name: conversations
+  description: Access to Petstore orders
+- name: friends
+  description: Access to Petstore orders
+- name: messages
+  description: Access to Petstore orders
+- name: users
+  description: Access to Petstore orders
+- name: posts
+  description: Access to Petstore orders
+ 
+ 
 paths:
-  /conversations:
+  "/login":
     post:
-      summary: Create a new conversation
-      operationId: createConversation
-      responses:
-        '200':
-          description: Successful operation
-    get:
-      summary: Get all conversations
-      operationId: getAllConversations
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{query}/search:
-    get:
-      summary: Search conversations based on query
-      operationId: searchConversations
-      parameters:
-        - name: query
-          in: path
-          description: The search query
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/room:
-    get:
-      summary: Get information about a specific conversation by ID
-      operationId: getConversationById
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/invite:
-    put:
-      summary: Invite members to a specific conversation by ID
-      operationId: inviteMembersToConversation
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/remove_members:
-    put:
-      summary: Remove members from a specific conversation by ID
-      operationId: removeMembersFromConversation
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/title:
-    put:
-      summary: Edit the title of a specific conversation by ID
-      operationId: editConversationTitle
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/cover_image:
-    put:
-      summary: Edit the cover image of a specific conversation by ID
-      operationId: editConversationCoverImage
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/remove_conversation:
-    delete:
-      summary: Delete a specific conversation by ID
-      operationId: deleteConversation
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{userId}/user_conversation:
-    get:
-      summary: Get a list of conversations for a specific user by user ID
-      operationId: getUserConversations
-      parameters:
-        - name: userId
-          in: path
-          description: The ID of the user
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /conversations/{id}/members:
-    get:
-      summary: Get a list of members in a specific conversation by ID
-      operationId: getConversationMembers
-      parameters:
-        - name: id
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages/{conversationId}/{page}:
-    get:
-      summary: Get all messages in a conversation
-      operationId: getAllMessagesByConversationId
-      parameters:
-        - name: conversationId
-          in: path
-          description: The ID of the conversation
-          required: true
-          schema:
-            type: string
-        - name: page
-          in: path
-          description: The page number
-          required: true
-          schema:
-            type: integer
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages/{messId}:
-    get:
-      summary: Get a specific message by ID
-      operationId: getMessageById
-      parameters:
-        - name: messId
-          in: path
-          description: The ID of the message
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages:
+      tags:
+      - auth
+      summary: uploads an image
+      description: ''
+   
+    
+  "/register":
     post:
-      summary: Create a new message
-      operationId: createMessage
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages/{messageId}/update:
+      tags:
+      - auth
+      summary: uploads an image
+      description: ''
+    
+  "/":
+    post:
+      tags:
+      - conversations
+     
+    
+  "/:query/search":
+    get:
+      tags:
+      - conversations
+     
+    
+   
+  
+     
+    
+  
+  "/:id/room":
+    get:
+      tags:
+      - conversations
+     
+    
+  "/:id/invite":
     put:
-      summary: Update a specific message by ID
-      operationId: updateMessage
-      parameters:
-        - name: messageId
-          in: path
-          description: The ID of the message
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages/{messageId}/delete:
+      tags:
+      - conversations
+     
+    
+  "/:id/remove_members":
+    put:
+      tags:
+      - conversations
+     
+    
+  "/:id/title":
+    put:
+      tags:
+      - conversations
+     
+    
+  "/:id/cover_image":
+    put:
+      tags:
+      - conversations
+     
+    
+  "/:id/remove_conversation":
     delete:
-      summary: Delete a specific message by ID
-      operationId: deleteMessage
-      parameters:
-        - name: messageId
-          in: path
-          description: The ID of the message
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
-
-  /messages/{messageId}/hidden:
+      tags:
+      - conversations
+     
+    
+  "/:userId/user_conversation":
+    get:
+      tags:
+      - conversations
+     
+    
+  "/:id/members":
+    get:
+      tags:
+      - conversations
+     
+    
+  "/friend-requests/:id":
+    post:
+      tags:
+      - friends
+     
+    
+    get:
+      tags:
+      - friends
+     
+    
+ 
+  "/friend-requests/sent/:id":
+    get:
+      tags:
+      - friends
+     
+    
+  "/friend-requests/:id/confirm":
     put:
-      summary: Hide a specific message by ID
-      operationId: hideMessage
-      parameters:
-        - name: messageId
-          in: path
-          description: The ID of the message
-          required: true
-          schema:
-            type: string
-      responses:
-        '200':
-          description: Successful operation
+      tags:
+      - friends
+     
+    
+  "/friends/:id":
+    get:
+      tags:
+      - friends
+     
+    
+    delete:
+      tags:
+      - friends
+     
+    
+  "/:conversationId/:page":
+      get:
+        tags:
+        - messages
+       
+      
+  "/:messId":
+      get:
+        tags:
+        - messages
+       
+      
+ 
+  "/:messageId/update":
+      put:
+        tags:
+        - messages
+       
+      
+ 
+  "/:messageId/delete":
+      delete:
+        tags:
+        - messages
+       
+      
+  "/:messageId/hidden":
+      put:
+        tags:
+        - messages
+       
+      
+  "/create":
+      post:
+        tags:
+        - posts
+       
+      
+  "/:id":
+      get:
+        tags:
+        - posts
+        - users
+      put:
+        tags:
+        - users
+      
+  "/user/:id":
+      get:
+        tags:
+        - posts
+       
+  "/:id/like":
+      put:
+        tags:
+        - posts
+       
+      
+  "/:id/unlike":
+      put:
+        tags:
+        - posts
+       
+      
+  "/:id/update":
+      put:
+        tags:
+        - posts
+       
+  "/:id/delete":
+      delete:
+        tags:
+        - posts
+       
+      
+ 
+  "/all":
+      get:
+        tags:
+        - conversations
+        - users
 
-          
+     
+      
+     
+       
+      
+  securityDefinitions:
+  api_key:
+    type: apiKey
+    name: api_key
+    in: header
+  petstore_auth:
+    type: oauth2
+    authorizationUrl: https://petstore.swagger.io/oauth/authorize
+    flow: implicit
+    scopes:
+      read:pets: read your pets
+      write:pets: modify pets in your account
+definitions:
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
