@@ -1,8 +1,8 @@
 //controller: call service method and return json
 import postService from "../services/posts.services.js"
 export const createPostController = async (req, res) => {
-    console.log(req.body)
-    const result = await postService.create(req.body)
+    const user_id = req.decoded_authorization.user_id
+    const result = await postService.create(req.body, user_id)
     return res.json({ result })
 }
 export const getPostByIdController = async (req, res) => {
@@ -16,9 +16,9 @@ export const getPostByIdController = async (req, res) => {
 
 export const getPostsByUserIdController = async (req, res) => {
 
-    const userId = req.params.id;
-    console.log(userId)
-    const posts = await postService.getPostsByUserId(userId);
+    const user_id = req.decoded_authorization.user_id
+ 
+    const posts = await postService.getPostsByUserId(user_id);
     return res.json({ posts });
 
 };
@@ -26,8 +26,9 @@ export const getPostsByUserIdController = async (req, res) => {
 export const likePostController = async (req, res) => {
 
     const postId = req.params.id;
-    const { userId } = req.body;
-    const post = await postService.likePost(postId, userId);
+    const user_id = req.decoded_authorization.user_id
+
+    const post = await postService.likePost(postId, user_id);
     return res.json({ post });
 
 };
@@ -35,8 +36,9 @@ export const likePostController = async (req, res) => {
 export const unlikePostController = async (req, res) => {
 
     const postId = req.params.id;
-    const { userId } = req.body;
-    const post = await postService.unlikePost(postId, userId);
+    const user_id = req.decoded_authorization.user_id
+
+    const post = await postService.unlikePost(postId, user_id);
     return res.json({ post });
 
 

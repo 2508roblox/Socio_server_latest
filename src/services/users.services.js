@@ -40,7 +40,7 @@ export class UserService {
     let { accessToken, refreshToken } = await this.signAccessAndRefreshToken({
       user_id: user._id.toString(),
     });
-     await RefreshToken.create({
+    await RefreshToken.create({
       token: refreshToken,
       user_id: user._id.toString(),
     });
@@ -80,17 +80,15 @@ export class UserService {
     return { accessToken, refreshToken };
   }
   async getAccessTokenByRefreshToken(user_id) {
-    let   token  = await this.signAccessToken(
-      {user_id: user_id}
+    let token = await this.signAccessToken(
+      { user_id: user_id }
     );
-    // insert refresh token to database
-   
     return { token };
   }
   async logout(user_id) {
-     await RefreshToken.deleteMany({ user_id  });
-   
-    return  "Logout successfully!";
+    await RefreshToken.deleteMany({ user_id });
+
+    return "Logout successfully!";
   }
   async getAllUsers() {
     const users = await User.find();

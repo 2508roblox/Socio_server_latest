@@ -2,17 +2,17 @@ import User from "../models/schemas/User.schema.js";
 import Post from "../models/schemas/Post.schema.js";
 
 export class PostService {
-  async create(credentials) {
+  async create(credentials, user_id) {
     const { userId, content, title } = credentials;
 
-    const user = await User.findById(userId);
+    const user = await User.findById(user_id);
 
     if (!user) {
       throw new Error("User not found");
     }
 
     const newPost = new Post({
-      user: user,
+      user: user_id,
       content,
       title,
     });
@@ -26,35 +26,35 @@ export class PostService {
     return post;
   }
 
-  async getPostsByUserId(userId) {
-    const posts = await Post.find({ 'user': userId });
+  async getPostsByUserId(user_id) {
+    const posts = await Post.find({ 'user': user_id });
     return posts;
   }
 
-  async likePost(postId, userId) {
+  async likePost(postId, user_id) {
     const post = await Post.findById(postId);
 
     if (!post) {
       throw new Error("Post not found");
     }
 
-    if (post.likes.includes(userId)) {
+    if (post.likes.includes(user_id)) {
       throw new Error("User has already liked this post");
     }
 
-    post.likes.push(userId);
+    post.likes.push(user_id);
     await post.save();
     return post;
   }
 
-  async unlikePost(postId, userId) {
+  async unlikePost(postId, user_id) {
     const post = await Post.findById(postId);
 
     if (!post) {
       throw new Error("Post not found");
     }
 
-    post.likes.pull(userId);
+    post.likes.pull(user_id);
     await post.save();
     return post;
 
