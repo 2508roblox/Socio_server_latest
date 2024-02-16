@@ -2,6 +2,15 @@ import mongoose from "mongoose";
 import bcrypt from 'bcrypt';
 export const UserSchema = new mongoose.Schema({
 
+    avatar: {
+        type: String,
+        default: 'https://i.stack.imgur.com/l60Hf.png'
+    },
+    banner: {
+        type: String,
+        default: 'https://learn.bestfriendsclub.ca/wp-content/themes/thrive-theme/inc/assets/images/featured_image.png'
+
+    },
     username: {
         type: String,
         required: true,
