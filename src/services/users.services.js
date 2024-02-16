@@ -44,7 +44,7 @@ export class UserService {
       token: refreshToken,
       user_id: user._id.toString(),
     });
-    return { accessToken, refreshToken };
+    return { accessToken, refreshToken, user };
   }
 
   async register(body) {
@@ -77,7 +77,7 @@ export class UserService {
       token: refreshToken,
       user_id: newUser._id.toString(),
     });
-    return { accessToken, refreshToken };
+    return { accessToken, refreshToken, user: newUser };
   }
   async getAccessTokenByRefreshToken(user_id) {
     let token = await this.signAccessToken(

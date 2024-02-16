@@ -15,10 +15,12 @@ const PostSchema = new mongoose.Schema({
         ref: 'users',
     }],
     // Add additional fields for post information below
-    title: {
-        type: String,
-        required: true,
-    },
+   
+    images:  [
+        {
+            type: String
+        }
+    ],
     createdAt: {
         type: Date,
         default: Date.now,

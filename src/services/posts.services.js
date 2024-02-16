@@ -3,7 +3,7 @@ import Post from "../models/schemas/Post.schema.js";
 
 export class PostService {
   async create(credentials, user_id) {
-    const { userId, content, title } = credentials;
+    const { content, images } = credentials;
 
     const user = await User.findById(user_id);
 
@@ -14,7 +14,7 @@ export class PostService {
     const newPost = new Post({
       user: user_id,
       content,
-      title,
+      images: [...images]
     });
 
     const createdPost = await newPost.save();
