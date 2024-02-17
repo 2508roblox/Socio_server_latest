@@ -96,7 +96,7 @@ export class UserService {
   }
 
   async getUserById(userId) {
-    const user = await User.findById(userId);
+    const user = await User.findById(userId, {password: 0});
     return user;
   }
 
