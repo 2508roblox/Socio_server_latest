@@ -32,8 +32,8 @@ export const confirmFriendRequestController = async (req, res) => {
 };
 
 export const getFriendsController = async (req, res) => {
-    const { id } = req.params;
-    const friends = await FriendService.getFriends(id);
+    const user_id = req.decoded_authorization.user_id
+    const friends = await FriendService.getFriends(user_id);
     res.status(200).json(friends);
 
 };
