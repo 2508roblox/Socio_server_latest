@@ -15,8 +15,8 @@ export const getUserByIdController = async (req, res) => {
 
 // Update a user by ID
 export const updateUserController = async (req, res) => {
-    const userId = req.params.id;
-    const updatedData = req.body;
+    const { userId, updatedData } = req.body;
+    console.log(updatedData)
     const updatedUser = await userService.updateUser(userId, updatedData);
     return res.json({ user: updatedUser });
 };
