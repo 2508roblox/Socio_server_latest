@@ -3,37 +3,40 @@
 import FriendService from '../services/friends.services.js';
 
 export const sendFriendRequestController = async (req, res) => {
-    const { id } = req.params;
-    const { senderId } = req.body;
+    const { senderId, id } = req.body;
     const friendRequest = await FriendService.sendFriendRequest(senderId, id);
     res.status(200).json(friendRequest);
 
 };
 
 export const getIncomingRequestsController = async (req, res) => {
-    const { id } = req.params;
-    const incomingRequests = await FriendService.getIncomingRequests(id);
+    const user_id = req.decoded_authorization.user_id
+    const incomingRequests = await FriendService.getIncomingRequests(user_id);
     res.status(200).json(incomingRequests);
 
 };
 
 export const getSentRequestsController = async (req, res) => {
-    const { id } = req.params;
-    const sentRequests = await FriendService.getSentRequests(id);
+    const user_id = req.decoded_authorization.user_id
+    const sentRequests = await FriendService.getSentRequests(user_id);
     res.status(200).json(sentRequests);
 
 };
 
 export const confirmFriendRequestController = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.body;
+    console.log(req.body)
+
+
     const confirmedRequest = await FriendService.confirmFriendRequest(id);
     res.status(200).json(confirmedRequest);
 
 };
 
 export const getFriendsController = async (req, res) => {
-    const { id } = req.params;
-    const friends = await FriendService.getFriends(id);
+    const user_id = req.decoded_authorization.user_id
+
+    const friends = await FriendService.getFriends(user_id);
     res.status(200).json(friends);
 
 };
