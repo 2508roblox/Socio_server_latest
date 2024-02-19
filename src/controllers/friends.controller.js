@@ -42,7 +42,8 @@ export const getFriendsController = async (req, res) => {
 };
 
 export const deleteFriendController = async (req, res) => {
-    const { id } = req.params;
+    const { id } = req.body;
+
     await FriendService.deleteFriend(id);
     res.status(200).json({ message: 'Friend deleted successfully' });
 
