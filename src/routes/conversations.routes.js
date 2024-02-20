@@ -42,8 +42,7 @@ conversationRouter.delete('/:id/remove_conversation', asyncHandlerWrapper(access
 
 // Lấy danh sách cuộc trò chuyện của một người dùng cụ thể dựa trên ID người dùng
 // @GET - Lấy danh sách cuộc trò chuyện của một người dùng cụ thể dựa trên ID người dùng
-conversationRouter.get('/:userId/user_conversation', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getConversationsByUserIdController));
-
+conversationRouter.get('/user_conversation', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getConversationsByUserIdController));
 // Lấy danh sách thành viên trong một cuộc trò chuyện cụ thể dựa trên ID
 // @GET - Lấy danh sách thành viên trong một cuộc trò chuyện cụ thể dựa trên ID
 conversationRouter.get('/:id/members', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getAllMembersByRoomIdController));

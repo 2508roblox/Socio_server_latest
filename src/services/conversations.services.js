@@ -105,12 +105,42 @@ export class ConversationService {
     return isExist;
 
   }
-  async getByQuery(query) {
-
+  async   getByQuery(query, user_id) {
     const regex = new RegExp(query, 'i');
-  const conversations = await Conversation.find({ title: { $regex: regex } });
-  return conversations;
-
+    
+    let conversations = await Conversation.find({ title: { $regex: regex } });
+    
+    const users = await User.find({
+      $and: [
+        { username: { $regex: regex } },
+        { _id: { $ne: user_id } }
+      ]
+    });
+    
+    const userConversations = [];
+    
+    for (const user of users) {
+      const userConversation = await Conversation.findOne({
+        participants: {
+          $all: [user_id, user._id],
+          $size: 2
+        }
+      });
+      
+      if (userConversation) {
+        userConversations.push(userConversation);
+      } else {
+        userConversations.push({
+          user_id: user._id.toString()
+        });
+      }
+    }
+    
+    conversations = conversations.concat(userConversations);
+    
+    return {
+      conversations
+    };
   }
 }
 const conversationService = new ConversationService()
