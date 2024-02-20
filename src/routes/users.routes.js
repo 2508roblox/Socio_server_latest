@@ -11,12 +11,12 @@ import { accessTokenValidator } from '../middlewares/user.middleware.js';
 const userRouter = express.Router();
 
 // Get all users
-userRouter.get('/all',asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getAllUsersController) );
+userRouter.get('/all', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getAllUsersController));
 
 // Get a user by ID
-userRouter.get('/:id',asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getUserByIdController) );
+userRouter.get('/:id', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(getUserByIdController));
 
 // Update a user by ID
-userRouter.put('/:id',asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(updateUserController) );
+userRouter.put('/', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(updateUserController));
 
 export default userRouter;

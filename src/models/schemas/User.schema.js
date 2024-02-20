@@ -34,11 +34,16 @@ export const UserSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
+    description: {
+        type: String,
+
+    },
     age: {
         type: Number,
     },
-
-});
+},
+    { timestamps: true }
+);
 UserSchema.pre('save', async function (next) {
     if (!this.isModified('password')) {
         next();

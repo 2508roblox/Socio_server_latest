@@ -16,6 +16,7 @@ const FriendRequestSchema = new mongoose.Schema({
         enum: ['pending', 'confirmed'],
         default: 'pending',
     },
+
 });
 
 export default mongoose.model.Friend || mongoose.model('Friend', FriendRequestSchema);

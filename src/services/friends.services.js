@@ -1,7 +1,8 @@
 import FriendRequest from '../models/schemas/Friend.schema.js';
+import User from "../models/schemas/User.schema.js";
 
 export class FriendService {
-  async sendFriendRequest(senderId, receiverId) {
+  async sendFriendRequest(receiverId, senderId) {
     const existingRequest = await FriendRequest.findOne({ sender: senderId, receiver: receiverId });
 
     if (existingRequest) {
@@ -14,12 +15,12 @@ export class FriendService {
   }
 
   async getIncomingRequests(userId) {
-    const incomingRequests = await FriendRequest.find({ receiver: userId }).populate('sender');
+    const incomingRequests = await FriendRequest.find({ receiver: userId, status: "pending" });
     return incomingRequests;
   }
 
   async getSentRequests(userId) {
-    const sentRequests = await FriendRequest.find({ sender: userId }).populate('receiver');
+    const sentRequests = await FriendRequest.find({ sender: userId, status: "pending" });
     return sentRequests;
   }
 
@@ -41,8 +42,7 @@ export class FriendService {
       $or: [{ sender: userId }, { receiver: userId }],
       status: 'confirmed',
     })
-      .populate('sender')
-      .populate('receiver');
+
     return friends;
   }
 
