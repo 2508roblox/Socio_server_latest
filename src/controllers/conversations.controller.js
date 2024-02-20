@@ -54,8 +54,10 @@ export const deleteConversationTitleController = async (req, res) => {
   return res.json({ result })
 }
 export const getConversationsByUserIdController = async (req, res) => {
-   let id = req.params.userId
-    const result =  await conversationService.getAllUserRoom( id)
+  const user_id = req.decoded_authorization.user_id
+
+
+    const result =  await conversationService.getAllUserRoom( user_id)
   
   return res.json({ result })
 }
