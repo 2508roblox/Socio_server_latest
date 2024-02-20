@@ -7,7 +7,8 @@ import {
     getSentRequestsController,
     confirmFriendRequestController,
     getFriendsController,
-    deleteFriendController
+    deleteFriendController,
+    InfoFriendsController
 } from '../controllers/friends.controller.js';
 import asyncHandlerWrapper from '../utils/handlers.js';
 import { accessTokenValidator } from '../middlewares/user.middleware.js';
@@ -31,5 +32,6 @@ friendRouter.get('/friends', asyncHandlerWrapper(accessTokenValidator), asyncHan
 
 // Xóa bạn bè có ID cụ thể của người dùng
 friendRouter.delete('/friends', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(deleteFriendController));
+friendRouter.get('/friend-requests/info/:id', asyncHandlerWrapper(accessTokenValidator), asyncHandlerWrapper(InfoFriendsController));
 
 export default friendRouter;

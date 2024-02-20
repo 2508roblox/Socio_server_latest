@@ -48,3 +48,18 @@ export const deleteFriendController = async (req, res) => {
     res.status(200).json({ message: 'Friend deleted successfully' });
 
 };
+export const InfoFriendsController = async (req, res) => {
+    console.log(req.params.id);
+    const friends = await FriendService.getFriends(req.params.id);
+    const sentRequests = await FriendService.getSentRequests(req.params.id);
+    const incomingRequests = await FriendService.getIncomingRequests(req.params.id);
+    console.log(friends,
+        sentRequests,
+        incomingRequests)
+    res.status(200).json({
+        friends,
+        sentRequests,
+        incomingRequests
+    });
+
+};
